@@ -3,14 +3,14 @@ import './App.css';
 import TaskForm from './components/TaskForm';
 import Control from './components/Control';
 import TaskList from './components/TaskList';
-import { findIndex, filter } from 'lodash';
+import { findIndex } from 'lodash';
 
 class App extends Component {
 
     constructor(props){
       super(props);
       this.state = {
-        task : [],
+        tasks : [],
         isDisplayForm : false,
         taskEdit : null,
         filter : {
@@ -67,6 +67,7 @@ class App extends Component {
             isDisplayForm: true
           })
     }
+
 
     onSubmit = (data) => {
         var {tasks} = this.state; // tasks = this.state.tasks
@@ -158,18 +159,15 @@ class App extends Component {
       var { tasks, isDisplayForm, taskEdit, filter, keyword, sortBy, sortValue } = this.state; // var tasks = this.state.tasks
       if(filter){
           if(filter.name){
-            // tasks = tasks.filter((task) => {
-            //         return task.name.toLowerCase().indexOf(filter.name) !== -1;
-            //   });
-                tasks = filter(tasks, (task) => {
-                    return task.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
+            tasks = tasks.filter((task) => {
+                    return task.name.toLowerCase().indexOf(filter.name) !== -1;
                 });
             }
-                tasks = tasks.filter((task) => {
-              if (filter.status === '-1' || filter.status === -1){
-                  return task;
-              }else{
-                  return task.status === (filter.status === 1 ? true : false)
+            tasks = tasks.filter((task) => {
+                if (filter.status === -1){
+                    return task;
+                }else{
+                    return task.status === (filter.status === 1 ? true : false)
               }
           });
         

@@ -64,8 +64,8 @@ class TaskList extends Component {
                         </td>
                         <td>
                             <select 
-                                name="filterStatus" 
                                 className="form-control"
+                                name="filterStatus" 
                                 value={filterStatus}
                                 onChange={ this.onChange }
                             >
