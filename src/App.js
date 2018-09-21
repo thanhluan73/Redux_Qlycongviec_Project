@@ -164,14 +164,15 @@ class App extends Component {
                 tasks = filter(tasks, (task) => {
                     return task.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
                 });
-          }
-          tasks = tasks.filter((task) => {
-              if (filter.status === -1){
+            }
+                tasks = tasks.filter((task) => {
+              if (filter.status === '-1' || filter.status === -1){
                   return task;
               }else{
                   return task.status === (filter.status === 1 ? true : false)
               }
           });
+        
       }
       if(sortBy === 'name'){
           tasks.sort((a, b) => {
